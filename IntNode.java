@@ -11,7 +11,9 @@ public class IntNode
    // Postcondition: All instance variables of the IntNode class are initialized in order.
    public IntNode(int initialsequenceNumber, int initialdata, IntNode initialLink)
    {
-        // Implement me.
+        sequenceNumber = initialsequenceNumber;
+        data = initialdata;
+        link = initialLink;
    }
 
    
@@ -21,7 +23,7 @@ public class IntNode
    // The new node is added to the linked list at a position that comes immediately after the node whose method is activated.
    public void addNodeAfter(int item, int data)   
    {
-	    // Implement me.
+	      link = new IntNode(item, data, null);
    }
    
    
@@ -31,7 +33,9 @@ public class IntNode
    // is removed from the linked list.
    public void removeNodeAfter( )   
    {
-	    // Implement me. 
+	      if(link != null && link.link != null){
+             link = link.link;
+         }
    } 
    
    
@@ -39,7 +43,7 @@ public class IntNode
    // Postcondition: The sequenceNumber of this node is returned.
    public int getsequenceNumber( )   
    {
-	    // Implement me.
+	      return sequenceNumber;
    }
    
   
@@ -47,7 +51,7 @@ public class IntNode
    // Postcondition: The link of this node is returned.
    public IntNode getLink( )
    {
-	    // Implement me.                                             
+	      return link;                                         
    } 
     
    
