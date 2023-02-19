@@ -23,7 +23,8 @@ public class IntNode
    // The new node is added to the linked list at a position that comes immediately after the node whose method is activated.
    public void addNodeAfter(int item, int data)   
    {
-	      link = new IntNode(item, data, null);
+	    link = new IntNode(item, data, link);
+      
    }
    
    
@@ -33,17 +34,17 @@ public class IntNode
    // is removed from the linked list.
    public void removeNodeAfter( )   
    {
-	      if(link != null && link.link != null){
-             link = link.link;
-         }
-   } 
+	    if(link != null){
+          link = link.link;
+      }
+   }
    
    
    // Precondition: This instance of the IntNode class exists.
    // Postcondition: The sequenceNumber of this node is returned.
    public int getsequenceNumber( )   
    {
-	      return sequenceNumber;
+	    return sequenceNumber;
    }
    
   
@@ -51,7 +52,7 @@ public class IntNode
    // Postcondition: The link of this node is returned.
    public IntNode getLink( )
    {
-	      return link;                                         
+	    return link;                                          
    } 
     
    
@@ -60,17 +61,35 @@ public class IntNode
    // are displayed on the monitor. 
    public void displayNodeData(IntNode head)
    {
-	    // Implement me.
+      IntNode current = head;
+      System.out.print("The (sequence number, data) pairs in the linked list are: ");
+      while(current != null){
+       System.out.print("(" + current.sequenceNumber + " ," + current.data + ") ");
+        current = current.link;
+        
+      }
+     
+     System.out.println("");
+     System.out.println("");
    }
    
    
    // Precondition: The head of the linked list is different than null, and its sequenceNumber is different than target.
    // Postcondition: The link to the specific node, which comes before the node whose sequenceNumber is equal to target, 
    // is returned. If the linked list does not contain a node with sequenceNumber equal to target, then null is returned.   
-   public IntNode findPrevious(IntNode head, int target)
+  public IntNode findPrevious(IntNode head, int target)
    {
-	    // Implement me.
+	    IntNode current = head;
+      while(current.link != null){
+        if(current.link.sequenceNumber == target){
+          return current;
+        }
+          current = current.link;	
+        
+      }
+     return null;
    }
+   
 
    
    // Precondition: The head of the linked list is different than null, and its sequenceNumber is smaller than target.
@@ -79,7 +98,16 @@ public class IntNode
    // If no such node is found, the link to the last node in the linked list is returned. 
    public IntNode locatePredecessor(IntNode head, int target)
    {
-	    // Implement me.
+	    IntNode current = head;
+      while(current.link != null){
+        if(current.link.sequenceNumber > target){
+          return current;
+        }
+        current = current.link;
+        
+      }
+     return current;
+   
    }
   
 }
